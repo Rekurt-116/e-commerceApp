@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rekurt-workspace/home": ["libs/home/src/index.ts"]
+      "@rekurt-workspace/category": ["libs/category/src/index.ts"],
+      "@rekurt-workspace/home": ["libs/home/src/index.ts"],
+      "@rekurt-workspace/product": ["libs/product/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
