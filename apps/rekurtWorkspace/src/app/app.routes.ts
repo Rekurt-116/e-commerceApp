@@ -1,17 +1,33 @@
 import { Route } from '@angular/router';
-import { AppComponent } from './app.component';
-import { animation } from '@angular/animations';
+import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { loadProducts, loadProductsByCategory, productFeature } from '@rekurt-workspace/product';
 export const appRoutes: Route[] = [
-    // {
-    //     path: '',
-    //     component: AppComponent
-    // },
-    {
-        path: 'category/:categoryName',
-        loadComponent: () => 
-            import('@rekurt-workspace/product').then((m) => m.ProductComponent),
-        data: {
-            animation: 'CategoryPage'
-        }
-    }
+  {
+    path: '',
+    redirectTo: 'product',
+    pathMatch: 'full',
+  },
+  {
+      path: 'product',
+      loadComponent: () =>
+        import('@rekurt-workspace/product').then((m) => m.ProductComponent),
+      providers: [ 
+        provideState(productFeature),
+        provideEffects({ loadProducts, loadProductsByCategory })
+      ],
+  },
+  {
+    path: 'product/:categoryName',
+    loadComponent: () =>
+      import('@rekurt-workspace/product').then((m) => m.ProductComponent),
+    data: {
+      animation: 'CategoryPage',
+    },
+    providers: [ 
+      provideState(productFeature),
+      provideEffects({ loadProducts, loadProductsByCategory })
+    ],
+  },
 ];

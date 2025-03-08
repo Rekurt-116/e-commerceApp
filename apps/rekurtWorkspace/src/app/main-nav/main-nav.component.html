@@ -10,9 +10,12 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <!-- <div *ngIf="categories$ | async as cats" >{{cats | json}}</div> -->
+      <a mat-list-item [routerLink]="['product']">Все Продукты</a>
       <ng-container *ngFor="let cat of categories$ | async">
-        <a mat-list-item [routerLink]="['category', cat]">{{cat}}</a>
+        <a mat-list-item [routerLink]="['product', cat]">{{cat}}</a>
       </ng-container>
+      <a mat-list-item [routerLink]="['cart']">Показать Карточку</a>
+      <a mat-list-item [routerLink]="['order']">Показать Заказы</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
