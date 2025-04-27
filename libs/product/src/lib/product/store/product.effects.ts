@@ -25,8 +25,8 @@ export const loadProductsByCategory = createEffect(
     (actions$ = inject(Actions), productApiService = inject(ProductsApiService)) => {
       return actions$.pipe(
         ofType(productActions.loadProductByCategory),
-        exhaustMap(() =>
-          productApiService.getProductByCategory('jewelery').pipe(
+        exhaustMap((action) =>
+          productApiService.getProductByCategory(action.category).pipe(
             map((products: Product[]) => productActions.productSuccess({ products })),
             catchError((error: { message: string }) =>
               of(productActions.productFailure({ error: error.message }))
