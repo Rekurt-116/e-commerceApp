@@ -14,7 +14,7 @@
       <ng-container *ngFor="let cat of categories$ | async">
         <a mat-list-item [routerLink]="['product', cat]">{{cat}}</a>
       </ng-container>
-      <a mat-list-item [routerLink]="['cart']">Показать Карточку</a>
+      <a mat-list-item [routerLink]="['cart']">Показать Корзину</a>
       <a mat-list-item [routerLink]="['order']">Показать Заказы</a>
     </mat-nav-list>
   </mat-sidenav>
